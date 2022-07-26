@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.warehouse.bus.mapper.BusContractMapper">
+
+    <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusContract">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="first_part" column="first_part" jdbcType="INTEGER"/>
+            <result property="second_part" column="second_part" jdbcType="INTEGER"/>
+            <result property="sign_time" column="sign_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,first_part,second_part,
+        sign_time
+    </sql>
+</mapper>

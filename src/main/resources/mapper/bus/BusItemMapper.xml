@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.warehouse.bus.mapper.BusItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusItem">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="item_name" column="item_name" jdbcType="VARCHAR"/>
+            <result property="customer_id" column="customer_id" jdbcType="INTEGER"/>
+            <result property="provider_id" column="provider_id" jdbcType="INTEGER"/>
+            <result property="sales_id" column="sales_id" jdbcType="INTEGER"/>
+            <result property="capital_status" column="capital_status" jdbcType="VARCHAR"/>
+            <result property="contract_id" column="contract_id" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,item_name,customer_id,
+        provider_id,sales_id,capital_status,
+        contract_id,status
+    </sql>
+</mapper>
