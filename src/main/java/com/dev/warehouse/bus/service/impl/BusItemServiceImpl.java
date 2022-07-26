@@ -6,15 +6,23 @@ import com.dev.warehouse.bus.service.BusItemService;
 import com.dev.warehouse.bus.mapper.BusItemMapper;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
 * @author Administrator
 * @description 针对表【bus_item】的数据库操作Service实现
 * @createDate 2022-07-26 15:02:13
 */
 @Service
-public class BusItemServiceImpl extends ServiceImpl<BusItemMapper, BusItem>
-    implements BusItemService{
+public class BusItemServiceImpl extends ServiceImpl<BusItemMapper, BusItem> implements BusItemService{
+    @Resource
+    BusItemMapper busItemMapper;
 
+    @Override
+    public List<BusItem> all() {
+        return busItemMapper.all();
+    }
 }
 
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.warehouse.bus.mapper.BusFinanceMapper">
+
+    <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusFinance">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="item_id" column="item_id" jdbcType="INTEGER"/>
+            <result property="customer_id" column="customer_id" jdbcType="INTEGER"/>
+            <result property="provider_id" column="provider_id" jdbcType="INTEGER"/>
+            <result property="total_price" column="total_price" jdbcType="DOUBLE"/>
+            <result property="pre_pay" column="pre_pay" jdbcType="DOUBLE"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,item_id,customer_id,
+        provider_id,total_price,pre_pay,
+        create_time
+    </sql>
+</mapper>

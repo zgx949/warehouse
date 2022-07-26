@@ -54,9 +54,10 @@ public class BusItemController extends ApiController {
      */
     @GetMapping
     public R selectAll(Page<BusItem> page, BusItem busItem) {
-        IPage<BusItem> data = this.busItemService.page(page, new QueryWrapper<>(busItem));
+//        IPage<BusItem> data = this.busItemService.page(page, new QueryWrapper<>(busItem));
 
-        return success(data.getRecords());
+//        return success(data.getRecords());
+        return success(busItemService.all());
     }
 
     /**

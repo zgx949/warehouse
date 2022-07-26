@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.hibernate.validator.internal.util.Contracts;
+
 import java.io.Serializable;
 
 /**
@@ -29,18 +31,21 @@ public class BusItem implements Serializable {
      */
     @TableField(value = "customer_id")
     private Integer customerId;
+    private Customer customer;
 
     /**
      * 供应商ID
      */
     @TableField(value = "provider_id")
     private Integer providerId;
+    private Provider provider;
 
     /**
      * 订单ID
      */
     @TableField(value = "sales_id")
     private Integer salesId;
+    private Sales sales;
 
     /**
      * 资金情况
@@ -53,6 +58,7 @@ public class BusItem implements Serializable {
      */
     @TableField(value = "contract_id")
     private Integer contractId;
+    private Contracts contracts;
 
     /**
      * 状态：完成1，未完成0，异常-1
@@ -63,152 +69,99 @@ public class BusItem implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
-    /**
-     *
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     *
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * 项目名称
-     */
-    public String getItem_name() {
+    public String getItemName() {
         return itemName;
     }
 
-    /**
-     * 项目名称
-     */
-    public void setItem_name(String item_name) {
-        this.itemName = item_name;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    /**
-     * 客户ID
-     */
-    public Integer getCustomer_id() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    /**
-     * 客户ID
-     */
-    public void setCustomer_id(Integer customer_id) {
-        this.customerId = customer_id;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    /**
-     * 供应商ID
-     */
-    public Integer getProvider_id() {
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Integer getProviderId() {
         return providerId;
     }
 
-    /**
-     * 供应商ID
-     */
-    public void setProvider_id(Integer provider_id) {
-        this.providerId = provider_id;
+    public void setProviderId(Integer providerId) {
+        this.providerId = providerId;
     }
 
-    /**
-     * 订单ID
-     */
-    public Integer getSales_id() {
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
+    public Integer getSalesId() {
         return salesId;
     }
 
-    /**
-     * 订单ID
-     */
-    public void setSales_id(Integer sales_id) {
-        this.salesId = sales_id;
+    public void setSalesId(Integer salesId) {
+        this.salesId = salesId;
     }
 
-    /**
-     * 资金情况
-     */
-    public String getCapital_status() {
+    public Sales getSales() {
+        return sales;
+    }
+
+    public void setSales(Sales sales) {
+        this.sales = sales;
+    }
+
+    public String getCapitalStatus() {
         return capitalStatus;
     }
 
-    /**
-     * 资金情况
-     */
-    public void setCapital_status(String capital_status) {
-        this.capitalStatus = capital_status;
+    public void setCapitalStatus(String capitalStatus) {
+        this.capitalStatus = capitalStatus;
     }
 
-    /**
-     * 合同编号
-     */
-    public Integer getContract_id() {
+    public Integer getContractId() {
         return contractId;
     }
 
-    /**
-     * 合同编号
-     */
-    public void setContract_id(Integer contract_id) {
-        this.contractId = contract_id;
+    public void setContractId(Integer contractId) {
+        this.contractId = contractId;
     }
 
-    /**
-     * 状态：完成1，未完成0，异常-1
-     */
+    public Contracts getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Contracts contracts) {
+        this.contracts = contracts;
+    }
+
     public Integer getStatus() {
         return status;
     }
 
-    /**
-     * 状态：完成1，未完成0，异常-1
-     */
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        BusItem other = (BusItem) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getItem_name() == null ? other.getItem_name() == null : this.getItem_name().equals(other.getItem_name()))
-            && (this.getCustomer_id() == null ? other.getCustomer_id() == null : this.getCustomer_id().equals(other.getCustomer_id()))
-            && (this.getProvider_id() == null ? other.getProvider_id() == null : this.getProvider_id().equals(other.getProvider_id()))
-            && (this.getSales_id() == null ? other.getSales_id() == null : this.getSales_id().equals(other.getSales_id()))
-            && (this.getCapital_status() == null ? other.getCapital_status() == null : this.getCapital_status().equals(other.getCapital_status()))
-            && (this.getContract_id() == null ? other.getContract_id() == null : this.getContract_id().equals(other.getContract_id()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getItem_name() == null) ? 0 : getItem_name().hashCode());
-        result = prime * result + ((getCustomer_id() == null) ? 0 : getCustomer_id().hashCode());
-        result = prime * result + ((getProvider_id() == null) ? 0 : getProvider_id().hashCode());
-        result = prime * result + ((getSales_id() == null) ? 0 : getSales_id().hashCode());
-        result = prime * result + ((getCapital_status() == null) ? 0 : getCapital_status().hashCode());
-        result = prime * result + ((getContract_id() == null) ? 0 : getContract_id().hashCode());
-        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        return result;
     }
 }

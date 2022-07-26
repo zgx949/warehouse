@@ -23,19 +23,19 @@ public class BusContract implements Serializable {
      * 甲方
      */
     @TableField(value = "first_part")
-    private Integer first_part;
+    private Integer firstPart;
 
     /**
-     * 
+     *
      */
     @TableField(value = "second_part")
-    private Integer second_part;
+    private Integer secondPart;
 
     /**
      * 签订时间
      */
     @TableField(value = "sign_time")
-    private Date sign_time;
+    private Date signTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -57,43 +57,43 @@ public class BusContract implements Serializable {
     /**
      * 甲方
      */
-    public Integer getFirst_part() {
-        return first_part;
+    public Integer getFirstPart() {
+        return firstPart;
     }
 
     /**
      * 甲方
      */
-    public void setFirst_part(Integer first_part) {
-        this.first_part = first_part;
+    public void setFirstPart(Integer firstPart) {
+        this.firstPart = firstPart;
     }
 
     /**
-     * 
+     *
      */
-    public Integer getSecond_part() {
-        return second_part;
+    public Integer getSecondPart() {
+        return secondPart;
     }
 
     /**
-     * 
+     *
      */
-    public void setSecond_part(Integer second_part) {
-        this.second_part = second_part;
-    }
-
-    /**
-     * 签订时间
-     */
-    public Date getSign_time() {
-        return sign_time;
+    public void setSecondPart(Integer secondPart) {
+        this.secondPart = secondPart;
     }
 
     /**
      * 签订时间
      */
-    public void setSign_time(Date sign_time) {
-        this.sign_time = sign_time;
+    public Date getSignTime() {
+        return signTime;
+    }
+
+    /**
+     * 签订时间
+     */
+    public void setSignTime(Date signTime) {
+        this.signTime = signTime;
     }
 
     @Override
@@ -109,9 +109,9 @@ public class BusContract implements Serializable {
         }
         BusContract other = (BusContract) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getFirst_part() == null ? other.getFirst_part() == null : this.getFirst_part().equals(other.getFirst_part()))
-            && (this.getSecond_part() == null ? other.getSecond_part() == null : this.getSecond_part().equals(other.getSecond_part()))
-            && (this.getSign_time() == null ? other.getSign_time() == null : this.getSign_time().equals(other.getSign_time()));
+            && (this.getFirstPart() == null ? other.getFirstPart() == null : this.getFirstPart().equals(other.getFirstPart()))
+            && (this.getSecondPart() == null ? other.getSecondPart() == null : this.getSecondPart().equals(other.getSecondPart()))
+            && (this.getSignTime() == null ? other.getSignTime() == null : this.getSignTime().equals(other.getSignTime()));
     }
 
     @Override
@@ -119,9 +119,9 @@ public class BusContract implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getFirst_part() == null) ? 0 : getFirst_part().hashCode());
-        result = prime * result + ((getSecond_part() == null) ? 0 : getSecond_part().hashCode());
-        result = prime * result + ((getSign_time() == null) ? 0 : getSign_time().hashCode());
+        result = prime * result + ((getFirstPart() == null) ? 0 : getFirstPart().hashCode());
+        result = prime * result + ((getSecondPart() == null) ? 0 : getSecondPart().hashCode());
+        result = prime * result + ((getSignTime() == null) ? 0 : getSignTime().hashCode());
         return result;
     }
 
@@ -132,9 +132,9 @@ public class BusContract implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", first_part=").append(first_part);
-        sb.append(", second_part=").append(second_part);
-        sb.append(", sign_time=").append(sign_time);
+        sb.append(", first_part=").append(firstPart);
+        sb.append(", second_part=").append(secondPart);
+        sb.append(", sign_time=").append(signTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -2,6 +2,7 @@ package com.dev.warehouse.bus.mapper;
 
 import com.dev.warehouse.bus.entity.BusContract;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Administrator
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-07-26 15:00:27
 * @Entity com.dev.warehouse.bus.entity.BusContract
 */
+@Mapper
 public interface BusContractMapper extends BaseMapper<BusContract> {
 
 }
