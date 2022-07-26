@@ -7,13 +7,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
 /**
- * 
+ *
  * @TableName bus_item
  */
 @TableName(value ="bus_item")
 public class BusItem implements Serializable {
     /**
-     * 
+     *
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
@@ -22,37 +22,37 @@ public class BusItem implements Serializable {
      * 项目名称
      */
     @TableField(value = "item_name")
-    private String item_name;
+    private String itemName;
 
     /**
      * 客户ID
      */
     @TableField(value = "customer_id")
-    private Integer customer_id;
+    private Integer customerId;
 
     /**
      * 供应商ID
      */
     @TableField(value = "provider_id")
-    private Integer provider_id;
+    private Integer providerId;
 
     /**
      * 订单ID
      */
     @TableField(value = "sales_id")
-    private Integer sales_id;
+    private Integer salesId;
 
     /**
      * 资金情况
      */
     @TableField(value = "capital_status")
-    private String capital_status;
+    private String capitalStatus;
 
     /**
      * 合同编号
      */
     @TableField(value = "contract_id")
-    private Integer contract_id;
+    private Integer contractId;
 
     /**
      * 状态：完成1，未完成0，异常-1
@@ -64,14 +64,14 @@ public class BusItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * 
+     *
      */
     public void setId(Integer id) {
         this.id = id;
@@ -81,84 +81,84 @@ public class BusItem implements Serializable {
      * 项目名称
      */
     public String getItem_name() {
-        return item_name;
+        return itemName;
     }
 
     /**
      * 项目名称
      */
     public void setItem_name(String item_name) {
-        this.item_name = item_name;
+        this.itemName = item_name;
     }
 
     /**
      * 客户ID
      */
     public Integer getCustomer_id() {
-        return customer_id;
+        return customerId;
     }
 
     /**
      * 客户ID
      */
     public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+        this.customerId = customer_id;
     }
 
     /**
      * 供应商ID
      */
     public Integer getProvider_id() {
-        return provider_id;
+        return providerId;
     }
 
     /**
      * 供应商ID
      */
     public void setProvider_id(Integer provider_id) {
-        this.provider_id = provider_id;
+        this.providerId = provider_id;
     }
 
     /**
      * 订单ID
      */
     public Integer getSales_id() {
-        return sales_id;
+        return salesId;
     }
 
     /**
      * 订单ID
      */
     public void setSales_id(Integer sales_id) {
-        this.sales_id = sales_id;
+        this.salesId = sales_id;
     }
 
     /**
      * 资金情况
      */
     public String getCapital_status() {
-        return capital_status;
+        return capitalStatus;
     }
 
     /**
      * 资金情况
      */
     public void setCapital_status(String capital_status) {
-        this.capital_status = capital_status;
+        this.capitalStatus = capital_status;
     }
 
     /**
      * 合同编号
      */
     public Integer getContract_id() {
-        return contract_id;
+        return contractId;
     }
 
     /**
      * 合同编号
      */
     public void setContract_id(Integer contract_id) {
-        this.contract_id = contract_id;
+        this.contractId = contract_id;
     }
 
     /**
@@ -210,24 +210,5 @@ public class BusItem implements Serializable {
         result = prime * result + ((getContract_id() == null) ? 0 : getContract_id().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", item_name=").append(item_name);
-        sb.append(", customer_id=").append(customer_id);
-        sb.append(", provider_id=").append(provider_id);
-        sb.append(", sales_id=").append(sales_id);
-        sb.append(", capital_status=").append(capital_status);
-        sb.append(", contract_id=").append(contract_id);
-        sb.append(", status=").append(status);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
     }
 }
