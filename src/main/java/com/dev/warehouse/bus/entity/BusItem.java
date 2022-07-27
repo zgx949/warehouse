@@ -58,7 +58,7 @@ public class BusItem implements Serializable {
      */
     @TableField(value = "contract_id")
     private Integer contractId;
-    private Contracts contracts;
+    private BusContract contracts;
 
     /**
      * 状态：完成1，未完成0，异常-1
@@ -149,11 +149,11 @@ public class BusItem implements Serializable {
         this.contractId = contractId;
     }
 
-    public Contracts getContracts() {
+    public BusContract getContracts() {
         return contracts;
     }
 
-    public void setContracts(Contracts contracts) {
+    public void setContracts(BusContract contracts) {
         this.contracts = contracts;
     }
 

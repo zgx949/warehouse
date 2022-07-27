@@ -67,7 +67,7 @@
             <i class="layui-icon layui-icon-delete"></i>批量删除
         </button>
     </div>
-    <div id="customerRowBar" style="display: none;">
+    <div id="itemRowBar" style="display: none;">
         <button type="button" lay-event="update" shiro:hasPermission="customer:update" class="layui-btn layui-btn-sm layui-btn-radius"><i
                 class="layui-icon layui-icon-edit"></i>编辑
         </button>
@@ -85,82 +85,46 @@
                 <label class="layui-form-label">项目名称</label>
                 <div class="layui-input-block">
                     <input type="hidden" name="id">
-                    <input type="text" name="customername" lay-verify="required" autocomplete="off"
+                    <input type="text" name="itemName" lay-verify="required" autocomplete="off"
                            class="layui-input input-radius" placeholder="请输入项目名称">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">项目地址</label>
+                <label class="layui-form-label">合同编码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="address" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目地址">
+                    <input type="text" name="contractId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目地址">
                 </div>
             </div>
 
         </div>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">项目电话</label>
+                <label class="layui-form-label">客户编码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="telephone" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目电话">
+                    <input type="text" name="customerId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目电话">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">邮编</label>
+                <label class="layui-form-label">供应商编码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zip" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入邮编">
+                    <input type="text" name="providerId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入邮编">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">联系人</label>
+                <label class="layui-form-label">订单号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="connectionpersion" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人姓名">
+                    <input type="text" name="salesId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人姓名">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">联系电话</label>
+                <label class="layui-form-label">项目进度</label>
                 <div class="layui-input-block">
-                    <input type="text" name="phone" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人电话">
+                    <input type="text" name="status" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人电话">
                 </div>
             </div>
         </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">开户银行</label>
-                <div class="layui-input-block">
-                    <input type="text" id="bank" name="bank" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入开户银行">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">银行账户</label>
-                <div class="layui-input-block">
-                    <input type="text" id="account" name="account" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入开户银行">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">email</label>
-                <div class="layui-input-block">
-                    <input type="text" id="email" name="email" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入email">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">传真</label>
-                <div class="layui-input-block">
-                    <input type="text" id="fax" name="fax" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入传真">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">是否可用</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="available" value="1" title="可用" checked="">
-                    <input type="radio" name="available" value="0" title="不可用">
-                </div>
-            </div>
-        </div>
-
         <div class="layui-form-item">
             <div class="layui-input-block" style="text-align: center;padding-right: 7%">
                 <button type="button" class="layui-btn layui-btn-radius" lay-submit="" lay-filter="doSubmit" id="doSubmit"><i
@@ -191,24 +155,30 @@
         tableIns = table.render({
             elem: "#itemTable",
             title: "项目数据表格",
-            url: "/item/",
+            url: "/item",
             toolbar: "#customerToolBar",
             page: true,
             height: "full-180",
             cols: [ [
                 {type:'checkbox',fixed:'left'},
                 {field: 'id', title: 'ID', align: 'center',width:'50'},
-                {field: 'customer_id', title: '客户编码', align: 'center',width:'150'},
-                {field: 'provider_id', title: '供应商编码', align: 'center',width:'140'},
-                {field: 'item_name', title: '项目名', align: 'center',width:'90'},
-                {field: 'capital_status', title: '资金状态', align: 'center',width:'130'},
-                {field: 'sales_id', title: '订单id', align: 'center',width:'130'},
-                {field: 'contract_id', title: '合同id', align: 'center',width:'100'},
+                {field: 'customer', title: '客户', align: 'center',width:'150', templet:function (d) {
+                    return `<div>${ d.customer.customername }</div>`
+                }},
+                {field: 'provider', title: '供应商', align: 'center',width:'140', templet:function (d) {
+                        return `<div>${ d.provider.providername }</div>`
+                }},
+                {field: 'itemName', title: '项目名', align: 'center',width:'90'},
+                {field: 'capitalStatus', title: '资金状态', align: 'center',width:'130'},
+                {field: 'salesId', title: '订单id', align: 'center',width:'130'},
+                {field: 'contracts', title: '合同', align: 'center',width:'100', templet:function (d) {
+                        return `<div>${ d.contracts.id }</div>`
+                }},
 
-                {field: 'status', title: '项目状态', align: 'center',width:'100',templet:function (d) {
+                {field: 'status', title: '项目状态', align: 'center',width:'100', templet:function (d) {
                     return d.available==1?'<font color="blue">完成</font>':'<font color="red">未完成</font>';
                 }},
-                {fixed: 'right', title: '操作', toolbar: '#customerRowBar', align: 'center',width:'180'}
+                {fixed: 'right', title: '操作', toolbar: '#itemRowBar', align: 'center',width:'180'}
             ] ],
             done: function (data, curr, count) {
                 //不是第一页时，如果当前返回的数据为0那么就返回上一页
@@ -279,8 +249,9 @@
                 area:['700px','500px'],
                 title:'添加项目',
                 success:function () {
+                    console.log(data);
                     $("#dataFrm")[0].reset();
-                    url="/customer/addCustomer";
+                    url="/item/add";
                 }
             });
         }
@@ -296,8 +267,9 @@
                     //清空原有的数据
                     $("#dataFrm")[0].reset();
                     //装载新的数据
+                    console.log(data);
                     form.val("dataFrm",data);
-                    url="/customer/updateCustomer";
+                    url="/item/update";
                 }
             });
         }

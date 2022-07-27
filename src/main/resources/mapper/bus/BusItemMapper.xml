@@ -3,6 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.warehouse.bus.mapper.BusItemMapper">
+    <resultMap id="customerMap" type="com.dev.warehouse.bus.entity.Customer">
+        <id property="id" column="customer_id" jdbcType="INTEGER"/>
+        <result property="customername" column="customername" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <resultMap id="contractMap" type="com.dev.warehouse.bus.entity.BusContract">
+        <id property="id" column="contract_id" jdbcType="INTEGER"/>
+        <result property="firstPart" column="first_part" jdbcType="VARCHAR"></result>
+        <result property="secondPart" column="second_part" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <resultMap id="providerMap" type="com.dev.warehouse.bus.entity.Provider">
+        <id property="id" column="provider_id" jdbcType="INTEGER"/>
+        <result property="providername" column="providername" jdbcType="VARCHAR"></result>
+    </resultMap>
 
     <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusItem">
             <id property="id" column="id" jdbcType="INTEGER"/>
@@ -14,20 +28,10 @@
             <result property="contractId" column="contract_id" jdbcType="INTEGER"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
 
-<!--            <association property="customer" javaType="com.dev.warehouse.bus.entity.Customer">-->
-<!--                <id property="id" column="customer_id" />-->
-<!--                <result property="customername" column="customername"></result>-->
-<!--            </association>-->
-            <association property="customer" javaType="com.dev.warehouse.bus.entity.BusContract">
-                <id property="id" column="contract_id" />
-                <result property="firstPart" column="first_part"></result>
-                <result property="secondPart" column="second_part"></result>
-                <result property="signTime" column="sign_time"></result>
-            </association>
-<!--            <association property="customer" javaType="com.dev.warehouse.bus.entity.Provider">-->
-<!--                <id property="id" column="provider_id" />-->
-<!--                <result property="providername" column="providername"></result>-->
-<!--            </association>-->
+            <association property="customer" resultMap="customerMap"/>
+            <association property="contracts" resultMap="contractMap"/>
+            <association property="provider" resultMap="providerMap"/>
+
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -57,7 +61,7 @@
                         LEFT JOIN bus_contract b on bi.contract_id = b.id
 
     </sql>
-    <select id="all" resultType="com.dev.warehouse.bus.entity.BusItem">
+    <select id="all" resultMap="BaseResultMap">
         <include refid="Base_Column_List" />
     </select>
 </mapper>

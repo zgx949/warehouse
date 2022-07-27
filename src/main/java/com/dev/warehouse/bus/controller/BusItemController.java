@@ -77,7 +77,7 @@ public class BusItemController extends ApiController {
      * @param busItem 实体对象
      * @return 新增结果
      */
-    @PostMapping
+    @PostMapping("add")
     public R insert(@RequestBody BusItem busItem) {
         return success(this.busItemService.save(busItem));
     }
@@ -88,7 +88,7 @@ public class BusItemController extends ApiController {
      * @param busItem 实体对象
      * @return 修改结果
      */
-    @PutMapping
+    @PostMapping("update")
     public R update(@RequestBody BusItem busItem) {
         return success(this.busItemService.updateById(busItem));
     }
