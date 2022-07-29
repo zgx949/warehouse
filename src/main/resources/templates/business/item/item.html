@@ -37,12 +37,6 @@
                 <input type="text" name="connectionpersion" id="connectionpersion" class="layui-input input-radius" placeholder="请输入联系人名称">
             </div>
         </div>
-<!--        <div class="layui-inline">-->
-<!--            <label class="layui-form-label">联系人号码</label>-->
-<!--            <div class="layui-input-inline">-->
-<!--                <input type="text" name="phone" id="phone" class="layui-input input-radius" placeholder="请输入联系人号码">-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block" style="text-align: center;padding-right: 15%;">
@@ -108,6 +102,12 @@
                 <label class="layui-form-label">供应商编码</label>
                 <div class="layui-input-block">
                     <input type="text" name="providerId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入邮编">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">资金状态</label>
+                <div class="layui-input-block">
+                    <input type="text" name="capitalStatus" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入资金状态">
                 </div>
             </div>
         </div>
@@ -176,7 +176,7 @@
                 }},
 
                 {field: 'status', title: '项目状态', align: 'center',width:'100', templet:function (d) {
-                    return d.available==1?'<font color="blue">完成</font>':'<font color="red">未完成</font>';
+                    return d.status==1?'<font color="blue">完成</font>':'<font color="red">未完成</font>';
                 }},
                 {fixed: 'right', title: '操作', toolbar: '#itemRowBar', align: 'center',width:'180'}
             ] ],
@@ -249,7 +249,6 @@
                 area:['700px','500px'],
                 title:'添加项目',
                 success:function () {
-                    console.log(data);
                     $("#dataFrm")[0].reset();
                     url="/item/add";
                 }

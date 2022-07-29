@@ -2,6 +2,7 @@ package com.dev.warehouse.bus.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.dev.warehouse.bus.mapper.BusItemMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (BusItem)表控制层
@@ -33,17 +36,28 @@ public class BusItemController extends ApiController {
     @Resource
     private BusItemService busItemService;
 
+    @Resource
+    private BusItemMapper busItemMapper;
+
     /**
      * 跳转到項目管理页面
      * @return
      */
     @RequestMapping(value = "toItemManager", method=RequestMethod.GET)
-    public ModelAndView toCustomerManager(){
+    public ModelAndView toItemManager(){
         ModelAndView mv = new ModelAndView("business/item/item");
         return mv;
-
     }
 
+    /**
+     * 跳转到未完成管理页面
+     * @return
+     */
+    @RequestMapping(value = "toUnfinishedItemManager", method=RequestMethod.GET)
+    public ModelAndView toUnfinishedItemManager(){
+        ModelAndView mv = new ModelAndView("business/item/unfinishedItem");
+        return mv;
+    }
 
     /**
      * 分页查询所有数据
@@ -54,10 +68,16 @@ public class BusItemController extends ApiController {
      */
     @GetMapping
     public R selectAll(Page<BusItem> page, BusItem busItem) {
-//        IPage<BusItem> data = this.busItemService.page(page, new QueryWrapper<>(busItem));
-
-//        return success(data.getRecords());
         return success(busItemService.all());
+    }
+
+    /**
+     * 未完成的数据
+     * */
+    @GetMapping("unfinished")
+    public R selectUnfinished(Page<BusItem> page, BusItem busItem) {
+        // 未完成的status为0
+        return success(busItemMapper.unfinished());
     }
 
     /**
@@ -77,9 +97,13 @@ public class BusItemController extends ApiController {
      * @param busItem 实体对象
      * @return 新增结果
      */
-    @PostMapping("add")
-    public R insert(@RequestBody BusItem busItem) {
-        return success(this.busItemService.save(busItem));
+    @RequestMapping("add")
+    public R insert(BusItem busItem) {
+        try {
+            return success(this.busItemService.save(busItem));
+        } catch (Exception e) {
+            return failed(e.toString());
+        }
     }
 
     /**
@@ -88,8 +112,8 @@ public class BusItemController extends ApiController {
      * @param busItem 实体对象
      * @return 修改结果
      */
-    @PostMapping("update")
-    public R update(@RequestBody BusItem busItem) {
+    @RequestMapping("update")
+    public R update( BusItem busItem) {
         return success(this.busItemService.updateById(busItem));
     }
 
