@@ -91,6 +91,16 @@ public class BusItemController extends ApiController {
         return success(this.busItemService.getById(id));
     }
 
+    /*
+    * 点击完成
+    * */
+    @GetMapping("done/{id}")
+    public ModelAndView doneOne( @PathVariable Serializable id) {
+        success(this.busItemMapper.done(Integer.valueOf(id.toString())));
+        return new ModelAndView("business/item/markdone");
+    }
+
+
     /**
      * 新增数据
      *

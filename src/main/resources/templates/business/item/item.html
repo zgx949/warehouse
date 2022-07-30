@@ -172,7 +172,7 @@
                 {field: 'capitalStatus', title: '资金状态', align: 'center',width:'130'},
                 {field: 'salesId', title: '订单id', align: 'center',width:'130'},
                 {field: 'contracts', title: '合同', align: 'center',width:'100', templet:function (d) {
-                        return `<div>${ d.contracts.id }</div>`
+                        return `<div><p>甲方：${ d.contracts.firstPart }</p><p>乙方：${ d.contracts.secondPart }</p>(签订时间：${ d.contracts.signTime })</div>`
                 }},
 
                 {field: 'status', title: '项目状态', align: 'center',width:'100', templet:function (d) {

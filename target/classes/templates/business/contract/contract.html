@@ -25,22 +25,16 @@
 <form action="" method="post" id="searchFrm" lay-filter="searchFrm" class="layui-form">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">客户名称</label>
+            <label class="layui-form-label">甲方</label>
             <div class="layui-input-inline">
-                <input type="text" name="customername" id="customername" class="layui-input input-radius"
-                       placeholder="请输入客户名称">
+                <input type="text" name="firstPart" id="firstPart" class="layui-input input-radius"
+                       placeholder="请输入甲方名称">
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">联系人名称</label>
+            <label class="layui-form-label">乙方</label>
             <div class="layui-input-inline">
-                <input type="text" name="connectionpersion" id="connectionpersion" class="layui-input input-radius" placeholder="请输入联系人名称">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">联系人号码</label>
-            <div class="layui-input-inline">
-                <input type="text" name="phone" id="phone" class="layui-input input-radius" placeholder="请输入联系人号码">
+                <input type="text" name="secondPart" id="secondPart" class="layui-input input-radius" placeholder="请输入乙方名称">
             </div>
         </div>
     </div>
@@ -58,20 +52,20 @@
 
 <!--数据表格-->
 <div>
-    <table class="layui-hide" id="customerTable" lay-filter="customerTable"></table>
-    <div id="customerToolBar" style="display: none">
-        <button type="button" lay-event="add" shiro:hasPermission="customer:create" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">
-            <i class="layui-icon layui-icon-add-1"></i>添加客户
+    <table class="layui-hide" id="contractTable" lay-filter="contractTable"></table>
+    <div id="contractToolBar" style="display: none">
+        <button type="button" lay-event="add" shiro:hasPermission="contract:create" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">
+            <i class="layui-icon layui-icon-add-1"></i>添加合同
         </button>
-        <button type="button" lay-event="deleteBatch" shiro:hasPermission="customer:create" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">
+        <button type="button" lay-event="deleteBatch" shiro:hasPermission="contract:create" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius">
             <i class="layui-icon layui-icon-delete"></i>批量删除
         </button>
     </div>
-    <div id="customerRowBar" style="display: none;">
-        <button type="button" lay-event="update" shiro:hasPermission="customer:update" class="layui-btn layui-btn-sm layui-btn-radius"><i
+    <div id="contractRowBar" style="display: none;">
+        <button type="button" lay-event="update" shiro:hasPermission="contract:update" class="layui-btn layui-btn-sm layui-btn-radius"><i
                 class="layui-icon layui-icon-edit"></i>编辑
         </button>
-        <button type="button" lay-event="delete" shiro:hasPermission="customer:delete" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius"><i
+        <button type="button" lay-event="delete" shiro:hasPermission="contract:delete" class="layui-btn layui-btn-sm layui-btn-danger layui-btn-radius"><i
                 class="layui-icon layui-icon-delete"></i>删除
         </button>
     </div>
@@ -82,84 +76,25 @@
     <form action="" method="post" class="layui-form" id="dataFrm" lay-filter="dataFrm">
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">客户名称</label>
+                <label class="layui-form-label">甲方</label>
                 <div class="layui-input-block">
                     <input type="hidden" name="id">
-                    <input type="text" name="customername" lay-verify="required" autocomplete="off"
-                           class="layui-input input-radius" placeholder="请输入客户名称">
+                    <input type="text" name="firstPart" lay-verify="required" autocomplete="off"
+                           class="layui-input input-radius" placeholder="请输入甲方名称">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">客户地址</label>
+                <label class="layui-form-label">乙方</label>
                 <div class="layui-input-block">
-                    <input type="text" name="address" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入客户地址">
-                </div>
-            </div>
-
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">客户电话</label>
-                <div class="layui-input-block">
-                    <input type="text" name="telephone" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入客户电话">
+                    <input type="text" name="secondPart" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入乙方名称">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">邮编</label>
-                <div class="layui-input-block">
-                    <input type="text" name="zip" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入邮编">
+                <label class="layui-form-label">签约时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="signTime" lay-verify="required" id="signTime" class="layui-input input-radius" placeholder="请输入签约时间">
                 </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">联系人</label>
-                <div class="layui-input-block">
-                    <input type="text" name="connectionpersion" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人姓名">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">联系电话</label>
-                <div class="layui-input-block">
-                    <input type="text" name="phone" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人电话">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">开户银行</label>
-                <div class="layui-input-block">
-                    <input type="text" id="bank" name="bank" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入开户银行">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">银行账户</label>
-                <div class="layui-input-block">
-                    <input type="text" id="account" name="account" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入开户银行">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">email</label>
-                <div class="layui-input-block">
-                    <input type="text" id="email" name="email" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入email">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">传真</label>
-                <div class="layui-input-block">
-                    <input type="text" id="fax" name="fax" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入传真">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">是否可用</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="available" value="1" title="可用" checked="">
-                    <input type="radio" name="available" value="0" title="不可用">
-                </div>
-            </div>
-        </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block" style="text-align: center;padding-right: 7%">
@@ -181,37 +116,34 @@
     //提升数据表格的作用域，因为底下还有一个reloadTable方法
     var tableIns;
 
-    layui.use(['jquery', 'form', 'layer', 'table'], function () {
+    layui.use(['jquery', 'form', 'layer', 'table', 'laydate'], function () {
         var $ = layui.jquery;
         var form = layui.form;
         var layer = layui.layer;
         var table = layui.table;
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#signTime', //指定元素
+            type: 'datetime'
+        });
 
         //初始化表格 加载数据
         tableIns = table.render({
-            elem: "#customerTable",
+            elem: "#contractTable",
             title: "客户数据表格",
-            url: "/customer/loadAllCustomer",
-            toolbar: "#customerToolBar",
+            url: "/busContract",
+            toolbar: "#contractToolBar",
             page: true,
             height: "full-180",
             cols: [ [
                 {type:'checkbox',fixed:'left'},
-                {field: 'id', title: 'ID', align: 'center',width:'50'},
-                {field: 'customername', title: '客户名称', align: 'center',width:'100'},
-                {field: 'address', title: '客户地址', align: 'center',width:'150'},
-                {field: 'telephone', title: '客户电话', align: 'center',width:'140'},
-                {field: 'zip', title: '邮编', align: 'center',width:'90'},
-                {field: 'connectionpersion', title: '联系人', align: 'center',width:'130'},
-                {field: 'phone', title: '联系人电话', align: 'center',width:'130'},
-                {field: 'bank', title: '开户银行', align: 'center',width:'100'},
-                {field: 'account', title: '银行账号', align: 'center',width:'160'},
-                {field: 'email', title: '邮箱', align: 'center',width:'200'},
-                {field: 'fax', title: '传真', align: 'center',width:'100'},
-                {field: 'available', title: '是否可用', align: 'center',width:'100',templet:function (d) {
-                    return d.available==1?'<font color="blue">可用</font>':'<font color="red">不可用</font>';
-                }},
-                {fixed: 'right', title: '操作', toolbar: '#customerRowBar', align: 'center',width:'180'}
+                {field: 'id', title: 'ID', align: 'center'},
+                {field: 'firstPart', title: '甲方', align: 'center'},
+                {field: 'secondPart', title: '乙方', align: 'center'},
+                {field: 'signTime', title: '签订时间', align: 'center'},
+                {fixed: 'right', title: '操作', toolbar: '#contractRowBar', align: 'center'}
             ] ],
             done: function (data, curr, count) {
                 //不是第一页时，如果当前返回的数据为0那么就返回上一页
@@ -234,6 +166,7 @@
             }
         });
 
+
         //监控模糊查询按钮事件
         form.on("submit(doSearch)", function (data) {
             tableIns.reload({
@@ -245,28 +178,29 @@
             return false;
         });
 
+
         //监控工具条事件
-        table.on("toolbar(customerTable)", function (obj) {
+        table.on("toolbar(contractTable)", function (obj) {
             switch (obj.event) {
                 case 'add':
                     openAddLayer();
                     break;
                 case 'deleteBatch':
-                    batchDeleteCustomer();
+                    batchDeletecontract();
                     break;
             };
         });
 
         //监控行工具条事件
-        table.on("tool(customerTable)", function (obj) {
+        table.on("tool(contractTable)", function (obj) {
             //获取当前行数据
             var data = obj.data;
             switch (obj.event) {
                 case 'delete':
-                    deleteCustomer(data);
+                    deletecontract(data);
                     break;
                 case 'update':
-                    updateCustomer(data);
+                    updatecontract(data);
                     break;
             };
         });
@@ -283,31 +217,33 @@
                 title:'添加客户',
                 success:function () {
                     $("#dataFrm")[0].reset();
-                    url="/customer/addCustomer";
+                    url="/busContract/addcontract";
+                    tableIns.reload();
                 }
             });
         }
 
         //打开修改的弹出层
-        function updateCustomer(data) {
+        function updatecontract(data) {
             mainIndex = layer.open({
                 type:1,
                 content:$("#addOrUpdateDiv"),
                 area:['700px','500px'],
-                title:'修改客户',
+                title:'修改合同',
                 success:function () {
                     //清空原有的数据
                     $("#dataFrm")[0].reset();
                     //装载新的数据
                     form.val("dataFrm",data);
-                    url="/customer/updateCustomer";
+                    url="/busContract/update";
+                    tableIns.reload();
                 }
             });
         }
 
         form.on("submit(doSubmit)",function (data) {
             $.post(url,data.field,function (res) {
-                if (res.code==200){
+                if (res.code==0){
                     tableIns.reload();
                 }
                 layer.msg(res.msg);
@@ -318,10 +254,10 @@
 
 
         //删除
-        function deleteCustomer(data) {
-            layer.confirm('你确定要删除【' + data.customername + '】这个客户吗？', {icon: 3, title: '提示'}, function (index) {
-                $.post("/customer/deleteCustomer", {id: data.id},function (res) {
-                    if (res.code == 200) {
+        function deletecontract(data) {
+            layer.confirm('你确定要删除【' + data.contractname + '】这个客户吗？', {icon: 3, title: '提示'}, function (index) {
+                $.post("/busContract/deletecontract", {id: data.id},function (res) {
+                    if (res.code == 0) {
                         tableIns.reload();
                     }
                     layer.msg(res.msg);
@@ -331,9 +267,9 @@
         }
 
         //批量删除
-        function batchDeleteCustomer() {
+        function batchDeletecontract() {
             //得到选中行
-            var checkStatus = table.checkStatus('customerTable');
+            var checkStatus = table.checkStatus('contractTable');
             var dataLength = checkStatus.data.length;
             if (dataLength>0){
                 layer.confirm('你确定要删除这些客户数据吗？',{icon: 3,title: '提示'},function (index) {
@@ -347,8 +283,8 @@
                             ids+="&ids="+item.id;
                         }
                     });
-                    $.post("/customer/batchDeleteCustomer",ids,function (res) {
-                        if (res.code==200){
+                    $.post("/busContract/batchDeletecontract",ids,function (res) {
+                        if (res.code==0){
                             //重新刷新表格
                             tableIns.reload();
                         }

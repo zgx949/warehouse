@@ -6,12 +6,12 @@
 
     <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusFinance">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="item_id" column="item_id" jdbcType="INTEGER"/>
-            <result property="customer_id" column="customer_id" jdbcType="INTEGER"/>
-            <result property="provider_id" column="provider_id" jdbcType="INTEGER"/>
-            <result property="total_price" column="total_price" jdbcType="DOUBLE"/>
-            <result property="pre_pay" column="pre_pay" jdbcType="DOUBLE"/>
-            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="itemId" column="item_id" jdbcType="INTEGER"/>
+            <result property="customerId" column="customer_id" jdbcType="INTEGER"/>
+            <result property="providerId" column="provider_id" jdbcType="INTEGER"/>
+            <result property="totalPrice" column="total_price" jdbcType="DOUBLE"/>
+            <result property="prePay" column="pre_pay" jdbcType="DOUBLE"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">

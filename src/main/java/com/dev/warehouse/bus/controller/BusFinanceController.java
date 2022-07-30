@@ -47,7 +47,7 @@ public class BusFinanceController extends ApiController {
      */
     @GetMapping
     public R selectAll(Page<BusFinance> page, BusFinance busFinance) {
-        return success(this.busFinanceService.page(page, new QueryWrapper<>(busFinance)));
+        return success(this.busFinanceService.page(page, new QueryWrapper<>(busFinance)).getRecords());
     }
 
     /**

@@ -14,6 +14,7 @@ import java.util.List;
 public interface BusItemMapper extends BaseMapper<BusItem> {
     List<BusItem> all();
     List<BusItem> unfinished();
+    int done(int id);
 }
 
 

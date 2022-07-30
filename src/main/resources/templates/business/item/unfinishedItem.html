@@ -141,9 +141,20 @@
 <script type="text/javascript" src="/resources/layui/layui.js"></script>
 
 <script type="text/javascript">
-
   //提升数据表格的作用域，因为底下还有一个reloadTable方法
   var tableIns;
+  function markDone (id) {
+    console.log(`${id}完成`)
+    // $.get('/item/done/' + id).then(res => {
+    //   alert('完成')
+    // })
+    window.open('/item/done/' + id)
+    tableIns.reload({
+      page: {
+        curr: 1
+      }
+    })
+  }
 
   layui.use(['jquery', 'form', 'layer', 'table'], function () {
     var $ = layui.jquery;
@@ -172,11 +183,10 @@
         {field: 'capitalStatus', title: '资金状态', align: 'center',width:'130'},
         {field: 'salesId', title: '订单id', align: 'center',width:'130'},
         {field: 'contracts', title: '合同', align: 'center',width:'100', templet:function (d) {
-            return `<div>${ d.contracts.id }</div>`
+            return `<div><p>甲方：${ d.contracts.firstPart }</p><p>乙方：${ d.contracts.secondPart }</p>(签订时间：${ d.contracts.signTime })</div>`
           }},
-
         {field: 'status', title: '项目状态', align: 'center',width:'100', templet:function (d) {
-            return d.status==1?'<font color="blue">完成</font>':'<font color="red">未完成</font>';
+            return d.status==1?`<font color="blue">完成</font>`:`<a onclick="markDone(${d.id})" color="red">点击标记完成</a>`;
           }},
         {fixed: 'right', title: '操作', toolbar: '#itemRowBar', align: 'center',width:'180'}
       ] ],

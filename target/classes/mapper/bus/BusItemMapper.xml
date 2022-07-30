@@ -11,6 +11,7 @@
         <id property="id" column="contract_id" jdbcType="INTEGER"/>
         <result property="firstPart" column="first_part" jdbcType="VARCHAR"></result>
         <result property="secondPart" column="second_part" jdbcType="VARCHAR"></result>
+        <result property="signTime" column="sign_time" jdbcType="VARCHAR"></result>
     </resultMap>
 
     <resultMap id="providerMap" type="com.dev.warehouse.bus.entity.Provider">
@@ -61,6 +62,12 @@
                         LEFT JOIN bus_contract b on bi.contract_id = b.id
 
     </sql>
+    <update id="done">
+        update bus_item set status=1
+        <where>
+            <if test="id != null">#{id}</if>
+        </where>
+    </update>
     <select id="all" resultMap="BaseResultMap">
         <include refid="Base_Column_List" />
         WHERE bi.status = 1
