@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dev.warehouse.bus.entity.BusFinance;
 import com.dev.warehouse.bus.service.BusFinanceService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
@@ -28,6 +29,14 @@ public class BusFinanceController extends ApiController {
      */
     @Resource
     private BusFinanceService busFinanceService;
+
+    /*
+    * 财务管理页面
+    * */
+    @RequestMapping("toFinanceManager")
+    public ModelAndView toFinanceManager() {
+        return new ModelAndView("business/finance/finance");
+    }
 
     /**
      * 分页查询所有数据

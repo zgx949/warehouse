@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dev.warehouse.bus.entity.BusContract;
 import com.dev.warehouse.bus.service.BusContractService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
@@ -28,7 +29,13 @@ public class BusContractController extends ApiController {
      */
     @Resource
     private BusContractService busContractService;
-
+    /*
+     * 合同管理页面
+     * */
+    @RequestMapping("toContractManager")
+    public ModelAndView toFinanceManager() {
+        return new ModelAndView("business/contract/contract");
+    }
     /**
      * 分页查询所有数据
      *
@@ -38,7 +45,7 @@ public class BusContractController extends ApiController {
      */
     @GetMapping
     public R selectAll(Page<BusContract> page, BusContract busContract) {
-        return success(this.busContractService.page(page, new QueryWrapper<>(busContract)));
+        return success(this.busContractService.page(page, new QueryWrapper<>(busContract)).getRecords());
     }
 
     /**
@@ -69,8 +76,8 @@ public class BusContractController extends ApiController {
      * @param busContract 实体对象
      * @return 修改结果
      */
-    @PutMapping
-    public R update(@RequestBody BusContract busContract) {
+    @RequestMapping("update")
+    public R update(BusContract busContract) {
         return success(this.busContractService.updateById(busContract));
     }
 

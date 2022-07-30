@@ -63,5 +63,10 @@
     </sql>
     <select id="all" resultMap="BaseResultMap">
         <include refid="Base_Column_List" />
+        WHERE bi.status = 1
+    </select>
+    <select id="unfinished" resultMap="BaseResultMap">
+        <include refid="Base_Column_List"></include>
+        WHERE bi.status = 0
     </select>
 </mapper>
