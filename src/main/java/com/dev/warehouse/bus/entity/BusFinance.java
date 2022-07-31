@@ -24,6 +24,7 @@ public class BusFinance implements Serializable {
      */
     @TableField(value = "item_id")
     private Integer itemId;
+    private BusItem busItem;
 
     /**
      * 客户编号
@@ -49,6 +50,17 @@ public class BusFinance implements Serializable {
     @TableField(value = "pre_pay")
     private Double prePay;
 
+    @TableField(value = "pay_time")
+    private Date payTime;
+    @TableField(value = "recive_time")
+    private Date reciveTime;
+    @TableField(value = "wanna_pay_person")
+    private String wannaPayPerson;
+    @TableField(value = "deadth_time")
+    private Date deadthTime;
+    @TableField(value = "bond_price")
+    private Double bondPrice;
+
     /**
      * 
      */
@@ -58,6 +70,53 @@ public class BusFinance implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
+    public BusItem getBusItem() {
+        return busItem;
+    }
+
+    public Double getBondPrice() {
+        return bondPrice;
+    }
+
+    public void setBondPrice(Double bondPrice) {
+        this.bondPrice = bondPrice;
+    }
+
+    public void setBusItem(BusItem busItem) {
+        this.busItem = busItem;
+    }
+
+    public Date getPayTime() {
+        return payTime;
+    }
+
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
+    }
+
+    public Date getReciveTime() {
+        return reciveTime;
+    }
+
+    public void setReciveTime(Date reciveTime) {
+        this.reciveTime = reciveTime;
+    }
+
+    public String getWannaPayPerson() {
+        return wannaPayPerson;
+    }
+
+    public void setWannaPayPerson(String wannaPayPerson) {
+        this.wannaPayPerson = wannaPayPerson;
+    }
+
+    public Date getDeadthTime() {
+        return deadthTime;
+    }
+
+    public void setDeadthTime(Date deadthTime) {
+        this.deadthTime = deadthTime;
+    }
 
     public Integer getId() {
         return id;

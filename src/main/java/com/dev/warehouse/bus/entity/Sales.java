@@ -39,6 +39,10 @@ public class Sales implements Serializable {
 
     private Integer goodsid;
 
+    @TableField("item_name")
+    private String itemName;
+
+
     /**
      * 客户名称
      */

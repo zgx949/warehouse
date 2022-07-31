@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.warehouse.bus.mapper.BusFinanceMapper">
+    <resultMap id="ItemMap" type="com.dev.warehouse.bus.entity.BusItem">
+        <id property="id" column="item_id" javaType="INTEGER"></id>
+        <result property="itemName" column="item_name" jdbcType="VARCHAR"/>
+    </resultMap>
 
     <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusFinance">
             <id property="id" column="id" jdbcType="INTEGER"/>
@@ -12,8 +16,34 @@
             <result property="totalPrice" column="total_price" jdbcType="DOUBLE"/>
             <result property="prePay" column="pre_pay" jdbcType="DOUBLE"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="payTime" column="pay_time" jdbcType="TIMESTAMP" />
+            <result property="reciveTime" column="recive_time" jdbcType="TIMESTAMP" />
+            <result property="deadthTime" column="deadth_time" jdbcType="TIMESTAMP" />
+            <result property="wannaPayPerson" column="wanna_pay_person" jdbcType="VARCHAR" />
+            <result property="bondPrice" column="bond_price" jdbcType="DOUBLE" />
+            <association property="busItem" resultMap="ItemMap"></association>
     </resultMap>
+    <select id="all" resultMap="BaseResultMap">
+        SELECT
+            bf.id,
+            bf.item_id,
+            bf.customer_id,
+            bf.provider_id,
+            bf.total_price,
+            bf.pre_pay,
+            bf.create_time,
+            bi.item_name,
+            bf.pay_time,
+            bf.recive_time,
+            bf.deadth_time,
+            bf.wanna_pay_person,
+            bf.bond_price
 
+        FROM
+            bus_finance bf, bus_item bi
+        where
+            bf.item_id=bi.id
+    </select>
     <sql id="Base_Column_List">
         id,item_id,customer_id,
         provider_id,total_price,pre_pay,

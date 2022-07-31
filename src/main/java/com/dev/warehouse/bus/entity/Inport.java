@@ -39,6 +39,9 @@ public class Inport implements Serializable {
 
     private Integer goodsid;
 
+    @TableField("item_name")
+    private String itemName;
+
     /**
      * 供应商姓名
      */

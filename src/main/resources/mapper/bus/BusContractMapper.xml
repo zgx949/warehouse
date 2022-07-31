@@ -6,9 +6,9 @@
 
     <resultMap id="BaseResultMap" type="com.dev.warehouse.bus.entity.BusContract">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="first_part" column="first_part" jdbcType="INTEGER"/>
-            <result property="second_part" column="second_part" jdbcType="INTEGER"/>
-            <result property="sign_time" column="sign_time" jdbcType="TIMESTAMP"/>
+            <result property="firstPart" column="first_part" jdbcType="INTEGER"/>
+            <result property="secondPart" column="second_part" jdbcType="INTEGER"/>
+            <result property="signTime" column="sign_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">

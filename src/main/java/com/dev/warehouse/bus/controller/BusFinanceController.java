@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dev.warehouse.bus.entity.BusFinance;
+import com.dev.warehouse.bus.mapper.BusFinanceMapper;
 import com.dev.warehouse.bus.service.BusFinanceService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +31,8 @@ public class BusFinanceController extends ApiController {
     @Resource
     private BusFinanceService busFinanceService;
 
+    @Resource
+    private BusFinanceMapper busFinanceMapper;
     /*
     * 财务管理页面
     * */
@@ -47,7 +50,8 @@ public class BusFinanceController extends ApiController {
      */
     @GetMapping
     public R selectAll(Page<BusFinance> page, BusFinance busFinance) {
-        return success(this.busFinanceService.page(page, new QueryWrapper<>(busFinance)).getRecords());
+//        return success(this.busFinanceService.page(page, new QueryWrapper<>(busFinance)).getRecords());
+        return success(this.busFinanceMapper.all());
     }
 
     /**

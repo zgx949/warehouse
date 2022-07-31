@@ -154,14 +154,24 @@
             cols: [ [
                 {type:'checkbox',fixed:'left'},
                 {field: 'id', title: 'ID', align: 'center',width:'50'},
-                {field: 'itemId', title: '项目编码', align: 'center',width:'100'},
-                {field: 'customerId', title: '客户编码', align: 'center',width:'150'},
-                {field: 'providerId', title: '供应商编码', align: 'center',width:'140'},
-                {field: 'totalPrice', title: '总金额', align: 'center',width:'90'},
-                {field: 'prePay', title: '预支付', align: 'center',width:'130'},
-                {field: '', title: '待支付', align: 'center',width:'200', templet:function (d) {
-                        return `<div>${ d.totalPrice - d.prePay }</div>`
+                {field: 'busItem', title: '项目编码', align: 'center',width:'100', templet: function (d) {
+                    return `<div>${ d.id }</div>`
                 }},
+                {field: 'busItem', title: '项目名', align: 'center',width:'100', templet: function (d) {
+                        return `<div>${ d.busItem.itemName }</div>`
+                }},
+                {field: 'payTime', title: '付款时间', align: 'center',width:'150'},
+                {field: 'totalPrice', title: '付款金额', align: 'center',width:'90'},
+                {field: 'wannaPayPerson', title: '付款申请人', align: 'center',width:'130'},
+                {field: 'reciveTime', title: '收款时间', align: 'center',width:'130'},
+                {field: 'prePay', title: '收款金额', align: 'center',width:'90'},
+                {field: 'bondPrice', title: '质保金', align: 'center',width:'90'},
+                {field: 'deadthTime', title: '质保金到期期限', align: 'center',width:'130'},
+                // {field: 'customerId', title: '客户编码', align: 'center',width:'150'},
+                // {field: 'providerId', title: '供应商编码', align: 'center',width:'140'},
+                // {field: '', title: '待支付', align: 'center',width:'200', templet:function (d) {
+                //         return `<div>${ d.totalPrice - d.prePay }</div>`
+                // }},
                 {field: 'createTime', title: '创建时间', align: 'center',width:'130'},
                 {fixed: 'right', title: '操作', toolbar: '#financeRowBar', align: 'center',width:'180'}
             ] ],
