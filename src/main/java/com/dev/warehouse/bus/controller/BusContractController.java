@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dev.warehouse.bus.entity.BusContract;
+import com.dev.warehouse.bus.mapper.BusContractMapper;
 import com.dev.warehouse.bus.service.BusContractService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +30,8 @@ public class BusContractController extends ApiController {
      */
     @Resource
     private BusContractService busContractService;
+    @Resource
+    private BusContractMapper busContractMapper;
     /*
      * 合同管理页面
      * */
@@ -45,7 +48,8 @@ public class BusContractController extends ApiController {
      */
     @GetMapping
     public R selectAll(Page<BusContract> page, BusContract busContract) {
-        return success(this.busContractService.page(page, new QueryWrapper<>(busContract)).getRecords());
+//        return success(this.busContractService.page(page, new QueryWrapper<>(busContract)).getRecords());
+        return success(this.busContractMapper.all());
     }
 
     /**

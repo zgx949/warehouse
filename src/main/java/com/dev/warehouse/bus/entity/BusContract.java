@@ -39,11 +39,21 @@ public class BusContract implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
+    @TableField(value = "item_name")
+    private String itemName;
     /**
      * 合同编号
      */
     public Integer getId() {
         return id;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     /**

@@ -4,6 +4,9 @@ import com.dev.warehouse.bus.entity.BusContract;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+import java.util.Map;
+
 /**
 * @author Administrator
 * @description 针对表【bus_contract(合同)】的数据库操作Mapper
@@ -13,6 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BusContractMapper extends BaseMapper<BusContract> {
 
+    List<BusContract> all();
 }
 
 
