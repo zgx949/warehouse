@@ -173,13 +173,13 @@
       cols: [ [
         {type:'checkbox',fixed:'left'},
         {field: 'id', title: 'ID', align: 'center',width:'50'},
+        {field: 'itemName', title: '项目名', align: 'center',width:'90'},
         {field: 'customer', title: '客户', align: 'center',width:'200', templet:function (d) {
             return `<div>${ d.customer.customername }</div>`
           }},
         {field: 'provider', title: '供应商', align: 'center',width:'200', templet:function (d) {
             return `<div>${ d.provider.providername }</div>`
           }},
-        {field: 'itemName', title: '项目名', align: 'center',width:'90'},
         {field: 'capitalStatus', title: '资金状态', align: 'center',width:'130'},
         {field: 'salesId', title: '订单id', align: 'center',width:'130'},
         {field: 'contracts', title: '合同', align: 'center',width:'100', templet:function (d) {
