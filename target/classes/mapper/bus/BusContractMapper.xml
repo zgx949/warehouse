@@ -9,10 +9,24 @@
             <result property="firstPart" column="first_part" jdbcType="INTEGER"/>
             <result property="secondPart" column="second_part" jdbcType="INTEGER"/>
             <result property="signTime" column="sign_time" jdbcType="TIMESTAMP"/>
+            <result property="itemName" column="item_name" jdbcType="VARCHAR" />
     </resultMap>
 
     <sql id="Base_Column_List">
         id,first_part,second_part,
         sign_time
     </sql>
+    <select id="all" resultType="com.dev.warehouse.bus.entity.BusContract">
+        SELECT
+            bc.id,
+            bc.first_part,
+            bc.second_part,
+            bc.sign_time,
+            bi.item_name
+        FROM
+            bus_contract bc ,
+            bus_item     bi
+        WHERE
+            bc.id=bi.contract_id
+    </select>
 </mapper>
