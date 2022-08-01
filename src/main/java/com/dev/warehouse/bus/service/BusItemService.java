@@ -11,5 +11,5 @@ import java.util.List;
 * @createDate 2022-07-26 15:02:13
 */
 public interface BusItemService extends IService<BusItem> {
-    List<BusItem> all();
+    List<BusItem> all(String itemName);
 }

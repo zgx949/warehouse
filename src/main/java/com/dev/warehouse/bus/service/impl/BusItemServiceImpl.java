@@ -20,8 +20,8 @@ public class BusItemServiceImpl extends ServiceImpl<BusItemMapper, BusItem> impl
     BusItemMapper busItemMapper;
 
     @Override
-    public List<BusItem> all() {
-        return busItemMapper.all();
+    public List<BusItem> all(String itemName) {
+        return busItemMapper.all(itemName);
     }
 }
 

@@ -12,7 +12,7 @@ import java.util.List;
 * @Entity com.dev.warehouse.bus.entity.BusItem
 */
 public interface BusItemMapper extends BaseMapper<BusItem> {
-    List<BusItem> all();
+    List<BusItem> all(String itemName);
     List<BusItem> unfinished();
     int done(int id);
 }

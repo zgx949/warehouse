@@ -67,8 +67,8 @@ public class BusItemController extends ApiController {
      * @return 所有数据
      */
     @GetMapping
-    public R selectAll(Page<BusItem> page, BusItem busItem) {
-        return success(busItemService.all());
+    public R selectAll(Page<BusItem> page, String itemName) {
+        return success(busItemService.all(itemName));
     }
 
     /**
@@ -110,6 +110,7 @@ public class BusItemController extends ApiController {
     @RequestMapping("add")
     public R insert(BusItem busItem) {
         try {
+            busItem.setStatus(0);
             return success(this.busItemService.save(busItem));
         } catch (Exception e) {
             return failed(e.toString());

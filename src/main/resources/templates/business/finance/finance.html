@@ -269,7 +269,7 @@
 
         form.on("submit(doSubmit)",function (data) {
             $.post(url,data.field,function (res) {
-                if (res.code==200){
+                if (res.code=0){
                     tableIns.reload();
                 }
                 layer.msg(res.msg);
@@ -310,7 +310,7 @@
                         }
                     });
                     $.post("/busFinance/batchDeletefinance",ids,function (res) {
-                        if (res.code==200){
+                        if (res.code=0){
                             //重新刷新表格
                             tableIns.reload();
                         }
