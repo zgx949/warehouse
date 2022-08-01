@@ -71,8 +71,8 @@ public class BusFinanceController extends ApiController {
      * @param busFinance 实体对象
      * @return 新增结果
      */
-    @PostMapping
-    public R insert(@RequestBody BusFinance busFinance) {
+    @PostMapping("addfinance")
+    public R insert(BusFinance busFinance) {
         return success(this.busFinanceService.save(busFinance));
     }
 
@@ -82,20 +82,20 @@ public class BusFinanceController extends ApiController {
      * @param busFinance 实体对象
      * @return 修改结果
      */
-    @PutMapping
-    public R update(@RequestBody BusFinance busFinance) {
+    @PostMapping("updatefinance")
+    public R update(BusFinance busFinance) {
         return success(this.busFinanceService.updateById(busFinance));
     }
 
     /**
      * 删除数据
      *
-     * @param idList 主键结合
+     * @param id 主键结合
      * @return 删除结果
      */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.busFinanceService.removeByIds(idList));
+    @PostMapping("deletefinance")
+    public R delete(BusFinance busFinance) {
+        return success(this.busFinanceService.removeById(busFinance.getId()));
     }
 }
 

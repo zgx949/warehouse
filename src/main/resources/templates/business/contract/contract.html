@@ -24,17 +24,23 @@
 </fieldset>
 <form action="" method="post" id="searchFrm" lay-filter="searchFrm" class="layui-form">
     <div class="layui-form-item">
+<!--        <div class="layui-inline">-->
+<!--            <label class="layui-form-label">甲方</label>-->
+<!--            <div class="layui-input-inline">-->
+<!--                <input type="text" name="firstPart" id="firstPart" class="layui-input input-radius"-->
+<!--                       placeholder="请输入甲方名称">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="layui-inline">-->
+<!--            <label class="layui-form-label">乙方</label>-->
+<!--            <div class="layui-input-inline">-->
+<!--                <input type="text" name="secondPart" id="secondPart" class="layui-input input-radius" placeholder="请输入乙方名称">-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="layui-inline">
-            <label class="layui-form-label">甲方</label>
+            <label class="layui-form-label">合同编码</label>
             <div class="layui-input-inline">
-                <input type="text" name="firstPart" id="firstPart" class="layui-input input-radius"
-                       placeholder="请输入甲方名称">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">乙方</label>
-            <div class="layui-input-inline">
-                <input type="text" name="secondPart" id="secondPart" class="layui-input input-radius" placeholder="请输入乙方名称">
+                <input type="text" name="id" id="id" class="layui-input input-radius" placeholder="请输入合同编码">
             </div>
         </div>
     </div>
@@ -139,7 +145,7 @@
             height: "full-180",
             cols: [ [
                 {type:'checkbox',fixed:'left'},
-                {field: 'id', title: 'ID', align: 'center'},
+                {field: 'id', title: '合同编号', align: 'center'},
                 {field: 'itemName', title: '项目名', align: 'center'},
                 {field: 'firstPart', title: '甲方', align: 'center'},
                 {field: 'secondPart', title: '乙方', align: 'center'},

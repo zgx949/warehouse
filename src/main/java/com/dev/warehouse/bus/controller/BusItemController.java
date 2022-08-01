@@ -130,12 +130,12 @@ public class BusItemController extends ApiController {
     /**
      * 删除数据
      *
-     * @param idList 主键结合
+     * @param id 主键结合
      * @return 删除结果
      */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.busItemService.removeByIds(idList));
+    @PostMapping
+    public R delete(int id) {
+        return success(this.busItemService.removeById(id));
     }
 }
 

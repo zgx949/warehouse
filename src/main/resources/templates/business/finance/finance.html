@@ -32,15 +32,9 @@
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">客户编码</label>
+            <label class="layui-form-label">项目名</label>
             <div class="layui-input-inline">
-                <input type="text" name="customerId" id="customerId" class="layui-input input-radius" placeholder="请输入客户编码">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">供应商编码</label>
-            <div class="layui-input-inline">
-                <input type="text" name="providerId" id="providerId" class="layui-input input-radius" placeholder="请输入供应商编码">
+                <input type="text" name="itemName" id="itemName" class="layui-input input-radius" placeholder="请输入项目名">
             </div>
         </div>
     </div>
@@ -269,7 +263,7 @@
 
         form.on("submit(doSubmit)",function (data) {
             $.post(url,data.field,function (res) {
-                if (res.code==200){
+                if (res.code==0){
                     tableIns.reload();
                 }
                 layer.msg(res.msg);
@@ -283,7 +277,7 @@
         function deletefinance(data) {
             layer.confirm('你确定要删除【' + data.financename + '】这个客户吗？', {icon: 3, title: '提示'}, function (index) {
                 $.post("/busFinance/deletefinance", {id: data.id},function (res) {
-                    if (res.code == 200) {
+                    if (res.code==0) {
                         tableIns.reload();
                     }
                     layer.msg(res.msg);
@@ -310,7 +304,7 @@
                         }
                     });
                     $.post("/busFinance/batchDeletefinance",ids,function (res) {
-                        if (res.code==200){
+                        if (res.code==0){
                             //重新刷新表格
                             tableIns.reload();
                         }

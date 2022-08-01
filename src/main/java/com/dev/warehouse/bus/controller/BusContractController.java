@@ -69,8 +69,8 @@ public class BusContractController extends ApiController {
      * @param busContract 实体对象
      * @return 新增结果
      */
-    @PostMapping
-    public R insert(@RequestBody BusContract busContract) {
+    @PostMapping("addcontract")
+    public R insert(BusContract busContract) {
         return success(this.busContractService.save(busContract));
     }
 
@@ -88,12 +88,12 @@ public class BusContractController extends ApiController {
     /**
      * 删除数据
      *
-     * @param idList 主键结合
+     * @param id 主键结合
      * @return 删除结果
      */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.busContractService.removeByIds(idList));
+    @PostMapping("deletecontract")
+    public R delete(int id) {
+        return success(this.busContractService.removeById(id));
     }
 }
 
