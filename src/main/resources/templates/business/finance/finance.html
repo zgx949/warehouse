@@ -281,7 +281,7 @@
 
         //删除
         function deletefinance(data) {
-            layer.confirm('你确定要删除【' + data.financename + '】这个客户吗？', {icon: 3, title: '提示'}, function (index) {
+            layer.confirm('你确定要删除【' + data.id + '】这个财务吗？', {icon: 3, title: '提示'}, function (index) {
                 $.post("/busFinance/deletefinance", {id: data.id},function (res) {
                     if (res.code == 200) {
                         tableIns.reload();

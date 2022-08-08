@@ -90,12 +90,12 @@ public class BusFinanceController extends ApiController {
     /**
      * 删除数据
      *
-     * @param idList 主键结合
+     * @param id 主键结合
      * @return 删除结果
      */
-    @DeleteMapping
-    public R delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.busFinanceService.removeByIds(idList));
+    @PostMapping("deletefinance")
+    public R delete(int id) {
+        return success(this.busFinanceService.removeById(id));
     }
 }
 
