@@ -94,8 +94,8 @@ public class BusFinanceController extends ApiController {
      * @return 删除结果
      */
     @PostMapping("deletefinance")
-    public R delete(BusFinance busFinance) {
-        return success(this.busFinanceService.removeById(busFinance.getId()));
+    public R delete(int id) {
+        return success(this.busFinanceService.removeById(id));
     }
 }
 

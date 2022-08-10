@@ -27,14 +27,8 @@
         <div class="layui-inline">
             <label class="layui-form-label">项目名称</label>
             <div class="layui-input-inline">
-                <input type="text" name="customername" id="customername" class="layui-input input-radius"
+                <input type="text" name="itemName" id="itemName" class="layui-input input-radius"
                        placeholder="请输入项目名称">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">联系人名称</label>
-            <div class="layui-input-inline">
-                <input type="text" name="connectionpersion" id="connectionpersion" class="layui-input input-radius" placeholder="请输入联系人名称">
             </div>
         </div>
     </div>
@@ -86,7 +80,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">合同编码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="contractId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目地址">
+                    <input type="text" name="contractId" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入合同编码">
                 </div>
             </div>
 
@@ -95,13 +89,13 @@
             <div class="layui-inline">
                 <label class="layui-form-label">客户编码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="customerId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目电话">
+                    <input type="text" name="customerId" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入客户编码">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">供应商编码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="providerId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入邮编">
+                    <input type="text" name="providerId" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入供应商编码">
                 </div>
             </div>
             <div class="layui-inline">
@@ -113,15 +107,15 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">订单号</label>
+                <label class="layui-form-label">项目编号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="salesId" lay-verify="required" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人姓名">
+                    <input type="text" name="salesId" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入项目编号">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">项目进度</label>
                 <div class="layui-input-block">
-                    <input type="text" name="status" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人电话">
+                    <input type="text" name="status" lay-verify="required|number" autocomplete="off" class="layui-input input-radius" placeholder="请输入联系人项目进度">
                 </div>
             </div>
         </div>
@@ -162,6 +156,7 @@
             cols: [ [
                 {type:'checkbox',fixed:'left'},
                 {field: 'id', title: 'ID', align: 'center',width:'50'},
+                {field: 'salesId', title: '项目编号', align: 'center',width:'130'},
                 {field: 'itemName', title: '项目名', align: 'center',width:'90'},
                 {field: 'customer', title: '客户', align: 'center',width:'200', templet:function (d) {
                     return `<div>${ d.customer.customername }</div>`
@@ -170,9 +165,9 @@
                         return `<div>${ d.provider.providername }</div>`
                 }},
                 {field: 'capitalStatus', title: '资金状态', align: 'center',width:'130'},
-                {field: 'salesId', title: '订单id', align: 'center',width:'130'},
-                {field: 'contracts', title: '合同', align: 'center',width:'100', templet:function (d) {
-                        return `<div><p>甲方：${ d.contracts.firstPart }</p><p>乙方：${ d.contracts.secondPart }</p>(签订时间：${ d.contracts.signTime })</div>`
+                {field: 'contracts', title: '合同编码', align: 'center',width:'100', templet:function (d) {
+                        // return `<div><p>甲方：${ d.contracts.firstPart }</p><p>乙方：${ d.contracts.secondPart }</p>(签订时间：${ d.contracts.signTime })</div>`
+                        return `<div><p>${ d.contracts.id }</p></div>`
                 }},
 
                 {field: 'status', title: '项目状态', align: 'center',width:'100', templet:function (d) {
@@ -289,7 +284,7 @@
         function deleteCustomer(data) {
             layer.confirm('你确定要删除【' + data.customername + '】这个项目吗？', {icon: 3, title: '提示'}, function (index) {
                 $.post("/customer/deleteCustomer", {id: data.id},function (res) {
-                    if (res.code == 200) {
+                    if (res.code == 0) {
                         tableIns.reload();
                     }
                     layer.msg(res.msg);

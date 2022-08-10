@@ -71,9 +71,11 @@
     <select id="all" resultMap="BaseResultMap">
         <include refid="Base_Column_List" />
         WHERE bi.status = 1
+        <if test="itemName != null">AND bi.item_name = #{itemName}</if>
     </select>
     <select id="unfinished" resultMap="BaseResultMap">
         <include refid="Base_Column_List"></include>
         WHERE bi.status = 0
+        <if test="itemName != null">AND bi.item_name = #{itemName}</if>
     </select>
 </mapper>
